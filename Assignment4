@@ -1,0 +1,45 @@
+CREATE TABLE Department(dname varchar(255), dnumber char(1) NOT NULL,mgrssn int,mgrstartdate date, PRIMARY KEY(dnumber));
+
+INSERT INTO Department VALUES ('devloper','5',26537537,'2000-11-08');
+INSERT INTO Department VALUES ('testing','4',7326474,'1989-07-12');
+INSERT INTO Department VALUES ('deployment','1',4748722,'1991-08-22');
+
+
+CREATE TABLE Employee(fname VARCHAR(15),mnit CHAR(1),lname VARCHAR(15), ssn int NOT NULL,bdate DATE,Address text, sex char(1),salary int,superssn int, dno int, PRIMARY KEY(ssn), FOREIGN KEY (dno) REFERENCES Department(dnumber));
+
+INSERT INTO Employee VALUES ('News','B','John',6555564,'2000-11-08','xyz','M',30000,1728538,5);
+INSERT INTO Employee VALUES ('Senior','T','david',215722,'1989-07-12','shgdjg','M',50100,237897,5);
+INSERT INTO Employee VALUES ('Arbough','J','June',236237,'1996-12-01','weutER','F',500000,252633,4);
+INSERT INTO Employee VALUES ('Ramoras','S','Anne',323573, '1987-11-15','weRERe','F',240000,252654,4);
+INSERT INTO Employee VALUES ('Johnson','k','Alice',234555, '1993-02-01','dfdgbb23 5','M',500550,252632,5);
+INSERT INTO Employee VALUES ('Smithfield','A','William',435566, '2004-06-22','2445 hgghg','F',400000,252667,5);
+INSERT INTO Employee VALUES ('Alonzo','V','Maria',544646, '1993-10-10','5676 gfhffh','M',700000,252678,4);
+INSERT INTO Employee VALUES ('Washington','E','Ralph',6467776, '1991-08-22','78548 jdkjd','M',750000,2526388,1);
+
+
+
+
+--1)employee fname start with 'A'
+
+SELECT * FROM Employee WHERE fname LIKE 'A%';
+
+--employee lname end with 'a'
+
+SELECT * FROM Employee WHERE lname LIKE '%a';
+
+--employee fullname have 'a' in it
+
+SELECT * FROM Employee WHERE fname LIKE '%a%' OR lname LIKE '%a%';
+
+--2)fname sorted in decending order in Employee
+
+SELECT * FROM Employee ORDER BY fname DESC;
+
+--3)MAX()
+SELECT MAX(salary) FROM Employee;
+--MIN()
+SELECT MIN(salary) FROM Employee;
+--AVG()
+SELECT AVG(salary) FROM Employee;
+--SUM()
+SELECT SUM(salary) FROM Employee;
